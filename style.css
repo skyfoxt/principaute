@@ -31,7 +31,7 @@ img{max-width:100%;display:block;}
 .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
 
 /* Bandeau tricolore, écho du drapeau */
-.flagbar{height:6px;display:flex;}
+.flagbar{height:6px;display:flex;position:sticky;top:0;z-index:50;}
 .flagbar span{flex:1;}
 .flagbar .b1{background:var(--ink);}
 .flagbar .b2{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
