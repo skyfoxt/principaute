@@ -84,12 +84,12 @@ section.alt{background:var(--paper-dim);}
 /* Gouvernement */
 .gov-lead{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:32px;}
 .gov-lead-item{background:var(--paper);padding:28px;}
-.gov-lead-item.prince{background:var(--blue-deep);padding:44px 32px;}
-.gov-lead-item.prince .role{font-size:.9rem;color:var(--gold-bright);letter-spacing:.03em;margin:0 0 8px;}
-.gov-lead-item.prince .who{font-family:var(--serif);font-size:2.6rem;font-weight:600;margin:0;color:#fff;}
-.gov-lead-item.president{background:var(--paper-dim);padding:20px 28px;}
-.gov-lead-item.president .role{font-size:.75rem;color:#8a8b90;margin:0 0 4px;}
-.gov-lead-item.president .who{font-family:var(--sans);font-size:.95rem;font-weight:500;margin:0;color:#6b6c70;}
+.gov-lead-item.prince{padding:34px 28px;}
+.gov-lead-item.prince .role{font-size:.85rem;color:var(--gold-bright);text-shadow:0 0 1px var(--gold);margin:0 0 6px;}
+.gov-lead-item.prince .who{font-family:var(--serif);font-size:2rem;font-weight:600;margin:0;color:var(--blue-deep);}
+.gov-lead-item.president{background:var(--paper-dim);}
+.gov-lead-item.president .role{font-size:.8rem;color:var(--blue);margin:0 0 4px;}
+.gov-lead-item.president .who{font-family:var(--sans);font-size:1.05rem;font-weight:600;margin:0;color:#4a4b50;}
 
 .gov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
 .gov-card{background:var(--paper);padding:22px 20px;}
