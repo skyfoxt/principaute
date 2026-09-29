@@ -1,242 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dette publique des États-Unis — Principauté de Romarin</title>
+<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+  /* Styles spécifiques à la page dette-américaine */
+  body{display:flex;flex-direction:column;min-height:100vh;}
 
-:root{
-  --ink:#14151a;
-  --paper:#f7f5f0;
-  --paper-dim:#efece4;
-  --line:#dcd8ce;
-  --blue:#0047ab;
-  --blue-deep:#0a1f44;
-  --gold:#b9871f;
-  --gold-bright:#ffd700;
-  --serif:'Fraunces', Georgia, serif;
-  --sans:'IBM Plex Sans', Arial, sans-serif;
-}
+  .hero-debt{padding:88px 0 64px;border-bottom:1px solid var(--line);flex:1 1 auto;}
+  .hero-debt .eyebrow{font-size:.85rem;color:var(--blue);margin:0 0 14px;text-transform:uppercase;letter-spacing:.06em;font-weight:500;}
+  .hero-debt h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;margin:0 0 8px;color:var(--blue-deep);}
+  .hero-debt .subtitle{font-size:1rem;color:#4a4b50;margin:0 0 36px;}
 
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--sans);
-  line-height:1.5;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-}
+  #debt{
+    font-family:var(--serif);
+    font-size:clamp(2rem,7vw,3.8rem);
+    line-height:1.1;
+    color:var(--ink);
+    font-variant-numeric:tabular-nums lining-nums;
+    overflow-wrap:anywhere;
+    margin:0;
+    padding:24px 0;
+    border-top:2px solid var(--gold);
+    border-bottom:1px solid var(--line);
+  }
+  #rate{margin:16px 0 0;color:var(--blue);font-weight:500;min-height:1.6em;font-size:1rem;}
 
-a{color:inherit;}
-img{max-width:100%;display:block;}
+  dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.5rem;margin:32px 0 0;padding-top:24px;border-top:1px solid var(--line);}
+  dt{color:#6b6c70;font-size:.9rem;font-weight:500;}
+  dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-family:var(--serif);font-size:1.05rem;color:var(--ink);}
 
-.wrap{max-width:1080px;margin:0 auto;padding:0 32px;width:100%;}
+  #status{margin:16px 0 0;color:var(--blue);padding:16px 20px;background:var(--paper-dim);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;font-size:.9rem;}
+  #status[hidden]{display:none;}
+  #status .btn{padding:6px 16px;font-size:.85rem;}
 
-/* Bandeau tricolore, écho du drapeau */
-.flagbar{height:6px;display:flex;position:sticky;top:0;z-index:50;}
-.flagbar span{flex:1;}
-.flagbar .b1{background:var(--ink);}
-.flagbar .b2{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.flagbar .b3{background:var(--blue);}
+  .note{margin:24px 0 0;max-width:60ch;font-size:.875rem;color:#6b6c70;padding:16px 20px;background:var(--paper-dim);border-radius:4px;}
+  .note a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--line);}
+  .note a:hover{border-color:var(--blue);}
 
-/* En-tête */
-header{border-bottom:1px solid var(--line);background:var(--paper);}
-.headrow{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 0;gap:24px;
-}
-.brand{
-  display:flex;align-items:center;gap:16px;text-decoration:none;color:var(--ink);
-  min-width:0;flex:1 1 auto;
-}
-.brand img{height:56px;width:auto;flex-shrink:0;}
-.brand-text{display:flex;flex-direction:column;line-height:1.2;min-width:0;}
-.brand-text .name{
-  font-family:var(--serif);font-size:1.25rem;font-weight:600;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.brand-text .motto{font-size:.78rem;color:var(--gold);letter-spacing:.04em;}
-
-nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;}
-nav a{text-decoration:none;font-size:.95rem;color:var(--blue-deep);border-bottom:2px solid transparent;padding-bottom:4px;transition:border-color .2s ease;}
-nav a:hover,nav a.active{border-color:var(--gold-bright);}
-
-.nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:1.1rem;cursor:pointer;}
-
-/* Section principale — compteur de dette */
-section.hero-debt{
-  padding:72px 0 56px;
-  border-bottom:1px solid var(--line);
-  flex:1 1 auto;
-}
-.hero-debt .eyebrow{
-  font-size:.85rem;color:var(--blue);margin:0 0 14px;
-  text-transform:uppercase;letter-spacing:.06em;font-weight:500;
-}
-.hero-debt h1{
-  font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;
-  margin:0 0 8px;color:var(--blue-deep);
-}
-.hero-debt .subtitle{
-  font-size:1rem;color:#4a4b50;margin:0 0 36px;
-}
-
-/* Compteur de dette */
-#debt{
-  font-family:var(--serif);
-  font-size:clamp(2rem,7vw,3.8rem);
-  line-height:1.1;
-  color:var(--ink);
-  font-variant-numeric:tabular-nums lining-nums;
-  overflow-wrap:anywhere;
-  margin:0;
-  padding:24px 0;
-  border-top:2px solid var(--gold);
-  border-bottom:1px solid var(--line);
-}
-#rate{
-  margin:16px 0 0;
-  color:var(--blue);
-  font-weight:500;
-  min-height:1.6em;
-  font-size:1rem;
-}
-
-/* Données détaillées */
-dl{
-  display:grid;grid-template-columns:auto 1fr;
-  gap:.5rem 1.5rem;
-  margin:32px 0 0;padding-top:24px;
-  border-top:1px solid var(--line);
-}
-dt{color:#6b6c70;font-size:.9rem;font-weight:500;}
-dd{
-  margin:0;text-align:right;
-  font-variant-numeric:tabular-nums;
-  font-family:var(--serif);
-  font-size:1.05rem;
-  color:var(--ink);
-}
-
-/* Statut d'erreur */
-#status{
-  margin:16px 0 0;
-  color:var(--blue);
-  padding:16px 20px;
-  background:var(--paper-dim);
-  border-left:3px solid var(--gold);
-  border-radius:0 4px 4px 0;
-  font-size:.9rem;
-}
-#status[hidden]{display:none;}
-
-/* Boutons */
-.btn{
-  display:inline-block;padding:13px 26px;border-radius:2px;
-  text-decoration:none;font-size:.95rem;font-weight:500;
-  border:1px solid transparent;cursor:pointer;
-}
-.btn-primary{background:var(--blue-deep);color:#fff;}
-.btn-primary:hover{background:var(--blue);}
-.btn-ghost{border-color:var(--ink);color:var(--ink);background:none;}
-.btn-ghost:hover{background:var(--ink);color:#fff;}
-
-/* Note source */
-.note{
-  margin:24px 0 0;max-width:60ch;
-  font-size:.875rem;color:#6b6c70;
-  padding:16px 20px;
-  background:var(--paper-dim);
-  border-radius:4px;
-}
-.note a{color:var(--blue);text-decoration:none;border-bottom:1px solid var(--line);}
-.note a:hover{border-color:var(--blue);}
-
-/* CTA Romarin */
-.cta{
-  background:var(--blue-deep);color:#fff;
-  padding:56px 0;
-  text-align:left;
-}
-.cta h2{font-family:var(--serif);font-size:1.8rem;margin:0 0 14px;}
-.cta p{max-width:56ch;color:#d7deee;margin:0 0 28px;font-size:.95rem;}
-.cta .btn-primary{background:var(--gold-bright);color:var(--blue-deep);}
-.cta .btn-primary:hover{background:#fff;}
-
-/* Pied de page */
-footer{
-  border-top:1px solid var(--line);
-  padding:28px 0;
-  font-size:.85rem;color:#6b6c70;
-  background:var(--paper);
-}
-
-/* Responsive */
-@media (max-width:760px){
-  .wrap{padding:0 20px;}
-  .headrow{gap:12px;}
-  .brand{gap:10px;}
-  .brand img{height:44px;}
-  .brand-text .motto{display:none;}
-
-  nav{position:fixed;inset:0 0 0 auto;width:min(78vw,300px);background:var(--paper);padding:100px 28px 28px;transform:translateX(100%);transition:transform .25s ease;border-left:1px solid var(--line);z-index:100;}
-  nav.open{transform:translateX(0);}
-  nav ul{flex-direction:column;gap:20px;}
-  .nav-toggle{display:block;}
-
-  section.hero-debt{padding:48px 0 40px;}
-  dl{grid-template-columns:1fr;gap:.25rem;}
-  dd{text-align:left;}
-}
-
-@media (max-width:400px){
-  .brand-text .name{font-size:1rem;}
-  .brand img{height:36px;}
-}
-
-:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px;}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto;}
-  *{transition:none !important;}
-}
+  @media (max-width:760px){
+    section.hero-debt{padding:48px 0 40px;}
+    dl{grid-template-columns:1fr;gap:.25rem;}
+    dd{text-align:left;}
+  }
 </style>
 </head>
 <body>
 
-<!-- Bandeau tricolore -->
 <div class="flagbar"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
-<!-- En-tête -->
 <header>
   <div class="wrap headrow">
-    <a href="https://principautederomarin.fr" class="brand">
-      <img src="https://principautederomarin.fr/assets/logo.png" alt="Blason de la Principauté de Romarin">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Blason de la Principauté de Romarin">
       <span class="brand-text">
         <span class="name">Principauté de Romarin</span>
         <span class="motto">Liberté – Justice – Paix</span>
       </span>
     </a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('open')">☰</button>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
     <nav>
       <ul>
-        <li><a href="https://principautederomarin.fr/index.html">Accueil</a></li>
-        <li><a href="https://principautederomarin.fr/gouvernement.html">Gouvernement</a></li>
-        <li><a href="https://principautederomarin.fr/constitution.html">Constitution</a></li>
-        <li><a href="https://principautederomarin.fr/histoire.html">Histoire</a></li>
-        <li><a href="https://principautederomarin.fr/index.html#rejoindre">Nous rejoindre</a></li>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="gouvernement.html">Gouvernement</a></li>
+        <li><a href="constitution.html">Constitution</a></li>
+        <li><a href="histoire.html">Histoire</a></li>
+        <li><a href="dette-americaine.html">Dette américaine</a></li>
+        <li><a href="index.html#rejoindre">Nous rejoindre</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- Section principale — compteur de dette -->
 <section class="hero-debt">
   <div class="wrap">
     <p class="eyebrow">Observatoire économique</p>
@@ -244,7 +82,7 @@ footer{
     <p class="subtitle">Compteur en temps réel fondé sur les données officielles du Département du Trésor des États-Unis.</p>
     <p id="debt" aria-live="off">Chargement…</p>
     <p id="rate"></p>
-    <p id="status" role="alert" hidden>Impossible de charger les données du Trésor américain. <button id="retry" type="button" class="btn btn-ghost" style="padding:6px 16px;font-size:.85rem;">Réessayer</button></p>
+    <p id="status" role="alert" hidden>Impossible de charger les données du Trésor américain. <button id="retry" type="button" class="btn btn-ghost">Réessayer</button></p>
     <dl>
       <dt>Dernière donnée officielle</dt><dd id="date">–</dd>
       <dt>Dette détenue par le public</dt><dd id="pub">–</dd>
@@ -254,20 +92,19 @@ footer{
   </div>
 </section>
 
-<!-- CTA Romarin -->
-<section class="cta">
+<section class="cta" id="rejoindre">
   <div class="wrap">
-    <h2>Devenez citoyen de la Principauté</h2>
-    <p>La Principauté de Romarin est un projet qui interroge le fonctionnement politique du monde moderne et propose sa propre vision d'une nation. Rejoignez la construction d'un projet politique et culturel hors du commun.</p>
-    <a href="https://principautederomarin.fr/index.html#rejoindre" class="btn btn-primary">Rejoindre maintenant</a>
+    <h2>Prêt à rejoindre l'aventure ?</h2>
+    <p>Devenez citoyen de la Principauté de Romarin et participez à la construction d'un projet politique et culturel hors du commun.</p>
+    <a href="https://forms.gle/HRVZZjBSjbexcoKR9" class="btn btn-primary" target="_blank" rel="noopener">Rejoindre maintenant</a>
   </div>
 </section>
 
-<!-- Pied de page -->
 <footer>
   <div class="wrap">© 2026 Principauté de Romarin — Observatoire économique. Tous droits réservés.</div>
 </footer>
 
+<script src="script.js"></script>
 <script>
 const API = 'https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/debt_to_penny';
 const nf = new Intl.NumberFormat('fr-FR', { maximumFractionDigits: 0 });
@@ -297,7 +134,7 @@ async function load() {
     const total = parseFloat(last.tot_pub_debt_out_amt);
     const seconds = (day(last.record_date) - day(first.record_date)) / 1000;
     const rate = (total - parseFloat(first.tot_pub_debt_out_amt)) / seconds;
-    const t0 = day(last.record_date) + 864e5; // fin de la journée de la dernière donnée
+    const t0 = day(last.record_date) + 864e5;
 
     $('rate').textContent = '+ ' + nf.format(rate) + ' $ par seconde en moyenne';
     $('date').textContent = new Date(day(last.record_date)).toLocaleDateString('fr-FR', { dateStyle: 'long', timeZone: 'UTC' });
