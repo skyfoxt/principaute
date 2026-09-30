@@ -3,10 +3,309 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Présentation des forces de défense de la Principauté de Romarin : surveillance, drones et protection territoriale.">
+
+<meta
+  name="description"
+  content="Présentation des Forces armées de la Principauté de Romarin : défense territoriale, escadrille de drones et garde territoriale."
+>
+
 <title>Forces armées — Principauté de Romarin</title>
+
 <link rel="stylesheet" href="style.css">
 <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.ico">
+
+<style>
+  /* Styles propres à la page Forces armées */
+
+  .defense-hero{
+    position:relative;
+    overflow:hidden;
+  }
+
+  .defense-hero::after{
+    content:"";
+    position:absolute;
+    top:-180px;
+    right:-140px;
+    width:520px;
+    height:520px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    opacity:.65;
+    pointer-events:none;
+  }
+
+  .defense-hero .wrap{
+    position:relative;
+    z-index:1;
+  }
+
+  .defense-hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) 260px;
+    align-items:center;
+    gap:56px;
+  }
+
+  .defense-hero h1{
+    max-width:18ch;
+  }
+
+  .defense-emblem{
+    width:240px;
+    height:240px;
+    margin-left:auto;
+    display:grid;
+    place-items:center;
+    border:2px solid var(--blue-deep);
+    border-radius:50%;
+    background:
+      radial-gradient(circle, var(--paper) 0 53%, transparent 54%),
+      repeating-radial-gradient(
+        circle,
+        transparent 0 18px,
+        rgba(0, 71, 171, .12) 19px 20px
+      );
+    box-shadow:0 0 0 12px var(--paper), 0 0 0 13px var(--line);
+  }
+
+  .defense-emblem-inner{
+    width:142px;
+    height:142px;
+    display:grid;
+    place-items:center;
+    border:2px solid var(--gold);
+    border-radius:50%;
+    color:var(--blue-deep);
+    font-family:var(--serif);
+    font-size:4.6rem;
+    font-weight:600;
+    line-height:1;
+  }
+
+  .defense-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:18px;
+  }
+
+  .defense-card{
+    min-height:230px;
+    padding:28px;
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+
+  .defense-card-number{
+    display:grid;
+    width:42px;
+    height:42px;
+    place-items:center;
+    margin-bottom:20px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    color:var(--blue-deep);
+    font-family:var(--serif);
+    font-weight:600;
+  }
+
+  .defense-card h3{
+    margin:0 0 10px;
+    color:var(--blue-deep);
+    font-family:var(--serif);
+    font-size:1.3rem;
+    font-weight:600;
+  }
+
+  .defense-card p{
+    margin:0;
+    color:#4a4b50;
+  }
+
+  .defense-units{
+    background:var(--paper-dim);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+
+  .unit-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+  }
+
+  .unit-card{
+    position:relative;
+    min-height:360px;
+    overflow:hidden;
+    padding:34px;
+    border:1px solid var(--line);
+    background:var(--paper);
+  }
+
+  .unit-card::after{
+    position:absolute;
+    right:-12px;
+    bottom:-56px;
+    color:rgba(0, 71, 171, .07);
+    font-family:var(--serif);
+    font-size:12rem;
+    font-weight:600;
+    line-height:1;
+    pointer-events:none;
+  }
+
+  .unit-drone::after{
+    content:"01";
+  }
+
+  .unit-garde::after{
+    content:"02";
+  }
+
+  .unit-label{
+    display:inline-block;
+    margin-bottom:14px;
+    color:var(--gold);
+    font-size:.8rem;
+    font-weight:600;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+  }
+
+  .unit-card h3{
+    position:relative;
+    z-index:1;
+    margin:0 0 14px;
+    color:var(--blue-deep);
+    font-family:var(--serif);
+    font-size:1.8rem;
+    font-weight:600;
+  }
+
+  .unit-card p{
+    position:relative;
+    z-index:1;
+    margin:0;
+    color:#4a4b50;
+  }
+
+  .defense-list{
+    position:relative;
+    z-index:1;
+    display:grid;
+    gap:10px;
+    margin:22px 0 0;
+    padding:0;
+    list-style:none;
+    color:#3c3d42;
+    font-size:.94rem;
+  }
+
+  .defense-list li{
+    padding-left:18px;
+    position:relative;
+  }
+
+  .defense-list li::before{
+    content:"◆";
+    position:absolute;
+    left:0;
+    top:2px;
+    color:var(--gold);
+    font-size:.65rem;
+  }
+
+  .defense-stats{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+
+  .defense-stat{
+    min-height:150px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:24px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+  }
+
+  .defense-stat strong{
+    display:block;
+    margin-bottom:8px;
+    color:var(--blue-deep);
+    font-family:var(--serif);
+    font-size:2.45rem;
+    font-weight:600;
+    line-height:1;
+  }
+
+  .defense-stat span{
+    color:#5a5b60;
+    font-size:.88rem;
+  }
+
+  .doctrine-box{
+    padding:38px;
+    border-left:5px solid var(--gold);
+    background:var(--paper-dim);
+  }
+
+  .doctrine-box h2{
+    margin:0 0 14px;
+    color:var(--blue-deep);
+    font-family:var(--serif);
+    font-size:2rem;
+    font-weight:600;
+  }
+
+  .doctrine-box p{
+    max-width:68ch;
+    margin:0;
+    color:#3c3d42;
+  }
+
+  @media (max-width:760px){
+    .defense-hero-grid{
+      grid-template-columns:1fr;
+      gap:36px;
+    }
+
+    .defense-emblem{
+      width:190px;
+      height:190px;
+      margin:0;
+    }
+
+    .defense-emblem-inner{
+      width:112px;
+      height:112px;
+      font-size:3.5rem;
+    }
+
+    .defense-grid,
+    .unit-grid,
+    .defense-stats{
+      grid-template-columns:1fr;
+    }
+
+    .defense-stat{
+      min-height:120px;
+    }
+
+    .unit-card{
+      min-height:auto;
+    }
+
+    .doctrine-box{
+      padding:28px 22px;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -19,15 +318,21 @@
 
 <header>
   <div class="wrap headrow">
+
     <a href="index.html" class="brand">
       <img src="assets/logo.png" alt="Blason de la Principauté de Romarin">
+
       <span class="brand-text">
         <span class="name">Principauté de Romarin</span>
         <span class="motto">Liberté – Justice – Paix</span>
       </span>
     </a>
 
-    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <button
+      class="nav-toggle"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+    >
       ☰
     </button>
 
@@ -41,159 +346,227 @@
         <li><a href="index.html#rejoindre">Nous rejoindre</a></li>
       </ul>
     </nav>
+
   </div>
 </header>
 
 <main>
 
-  <section class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Défense nationale</p>
+  <!-- Héros -->
 
-      <h1>Les Forces armées de la Principauté de Romarin.</h1>
+  <section class="hero defense-hero">
+    <div class="wrap defense-hero-grid">
 
-      <p class="lead">
-        Les Forces armées de la Principauté de Romarin constituent une organisation
-        de défense territoriale à vocation exclusivement défensive. Elles ont pour
-        objectif de contribuer à la sécurité du territoire, des institutions et des citoyens.
-      </p>
+      <div>
+        <p class="eyebrow">Défense nationale</p>
 
-      <div class="hero-actions">
-        <a href="#missions" class="btn btn-primary">Découvrir nos missions</a>
-        <a href="#organisation" class="btn btn-ghost">Voir l’organisation</a>
+        <h1>Les Forces armées de la Principauté de Romarin.</h1>
+
+        <p class="lead">
+          Une organisation de défense territoriale à vocation exclusivement
+          défensive, dédiée à la protection des institutions, du territoire
+          et de la population de la Principauté.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#missions" class="btn btn-primary">Découvrir nos missions</a>
+          <a href="#unites" class="btn btn-ghost">Voir les unités</a>
+        </div>
       </div>
+
+      <div class="defense-emblem" aria-label="Emblème symbolique des Forces armées">
+        <div class="defense-emblem-inner">✦</div>
+      </div>
+
     </div>
   </section>
+
+  <!-- Missions -->
 
   <section id="missions">
     <div class="wrap">
+
       <div class="section-head">
-        <h2>Une défense fondée sur la protection et la responsabilité</h2>
+        <h2>Préserver la souveraineté et la sécurité</h2>
         <p>
-          La Principauté de Romarin défend une approche mesurée de la sécurité :
-          protéger le territoire, prévenir les risques et soutenir la population
-          lors de circonstances exceptionnelles.
+          Les Forces armées sont placées sous l’autorité des institutions civiles
+          de la Principauté. Leur rôle est de prévenir les risques, contribuer à
+          la protection du territoire et soutenir la population en cas de nécessité.
         </p>
       </div>
 
-      <ul class="timeline">
-        <li>
-          <span class="date">Mission 01</span>
-          <strong>Protection territoriale.</strong>
-          Surveillance des espaces relevant de la Principauté, protection des lieux
-          institutionnels et participation à la préservation de l’ordre public dans
-          le cadre des lois et décisions des autorités compétentes.
-        </li>
+      <div class="defense-grid">
 
-        <li>
-          <span class="date">Mission 02</span>
-          <strong>Observation et prévention.</strong>
-          Détection des risques, observation des zones d’intérêt et remontée
-          d’informations utiles aux responsables civils et aux services de sécurité.
-        </li>
+        <article class="defense-card">
+          <div class="defense-card-number">01</div>
+          <h3>Défense territoriale</h3>
+          <p>
+            Surveillance des espaces de la Principauté et protection des sites,
+            institutions et infrastructures présentant un intérêt collectif.
+          </p>
+        </article>
 
-        <li>
-          <span class="date">Mission 03</span>
-          <strong>Soutien à la population.</strong>
-          Participation à l’assistance logistique, à l’évaluation des situations
-          d’urgence et à la protection civile en cas de besoin.
-        </li>
-      </ul>
+        <article class="defense-card">
+          <div class="defense-card-number">02</div>
+          <h3>Appui aux secours</h3>
+          <p>
+            Soutien à l’évaluation des situations d’urgence, à la coordination
+            logistique et à la protection civile lorsque les circonstances l’exigent.
+          </p>
+        </article>
+
+        <article class="defense-card">
+          <div class="defense-card-number">03</div>
+          <h3>Protection des citoyens</h3>
+          <p>
+            Participation à la résilience de la Principauté dans le respect
+            des libertés fondamentales, du droit et de l’autorité civile.
+          </p>
+        </article>
+
+      </div>
     </div>
   </section>
+
+  <!-- Unités -->
+
+  <section class="defense-units" id="unites">
+    <div class="wrap">
+
+      <div class="section-head">
+        <h2>Des moyens adaptés à un territoire compact</h2>
+        <p>
+          L’organisation privilégie l’observation, la mobilité, la coordination
+          et la préparation. Les deux unités principales remplissent des missions
+          complémentaires au service de la sécurité collective.
+        </p>
+      </div>
+
+      <div class="unit-grid">
+
+        <article class="unit-card unit-drone">
+          <span class="unit-label">Unité 01</span>
+
+          <h3>Escadrille de drones</h3>
+
+          <p>
+            Une composante aérienne légère dédiée à l’observation, à la cartographie
+            et à l’appui des missions de sécurité civile.
+          </p>
+
+          <ul class="defense-list">
+            <li>Observation générale du territoire</li>
+            <li>Cartographie et évaluation des zones concernées</li>
+            <li>Appui aux services de secours et de protection civile</li>
+            <li>Transmission d’informations aux autorités compétentes</li>
+            <li>Respect de la vie privée et des règles d’emploi</li>
+          </ul>
+        </article>
+
+        <article class="unit-card unit-garde">
+          <span class="unit-label">Unité 02</span>
+
+          <h3>Garde territoriale</h3>
+
+          <p>
+            Une unité de présence et de protection au sol, chargée de participer
+            à la sécurité des bâtiments institutionnels et des lieux d’intérêt.
+          </p>
+
+          <ul class="defense-list">
+            <li>Protection des institutions et sites sensibles</li>
+            <li>Contrôle des accès lors d’événements officiels</li>
+            <li>Coordination avec les responsables civils</li>
+            <li>Équipement individuel réglementé et sécurisé</li>
+            <li>Formation, discipline et traçabilité des moyens</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Organisation -->
 
   <section id="organisation">
     <div class="wrap">
+
       <div class="section-head">
-        <h2>Une organisation légère et adaptée</h2>
+        <h2>Une structure lisible et contrôlée</h2>
         <p>
-          La défense de la Principauté repose sur des moyens proportionnés à son
-          territoire, à ses besoins et à sa vocation pacifique.
+          Les indicateurs ci-dessous présentent l’organisation générale de la
+          défense de la Principauté. Ils peuvent être modifiés au fur et à mesure
+          de l’évolution du projet.
         </p>
       </div>
 
-      <ul class="timeline">
-        <li>
-          <span class="date">Unité 01</span>
-          <strong>Escadrille de drones.</strong>
-          Cette unité est destinée à l’observation aérienne, à la cartographie,
-          à la surveillance du territoire et à l’appui des missions de sécurité civile.
-          Les drones ont principalement une fonction de reconnaissance et de transmission
-          d’informations.
-        </li>
+      <div class="defense-stats">
 
-        <li>
-          <span class="date">Unité 02</span>
-          <strong>Garde territoriale.</strong>
-          La Garde territoriale assure la présence au sol, la protection des sites
-          sensibles et l’appui à la sécurité des institutions. Ses membres reçoivent
-          une formation adaptée aux principes de discipline, de responsabilité et
-          de respect de la population.
-        </li>
+        <div class="defense-stat">
+          <strong>02</strong>
+          <span>unités principales de défense</span>
+        </div>
 
-        <li>
-          <span class="date">Unité 03</span>
-          <strong>Commandement et coordination.</strong>
-          Les forces de défense sont placées sous l’autorité des institutions de la
-          Principauté. Leur organisation repose sur une chaîne de commandement claire,
-          un contrôle civil et une coordination avec les services concernés.
-        </li>
-      </ul>
+        <div class="defense-stat">
+          <strong>01</strong>
+          <span>commandement placé sous autorité civile</span>
+        </div>
+
+        <div class="defense-stat">
+          <strong>24/7</strong>
+          <span>principe de veille et de coordination</span>
+        </div>
+
+        <div class="defense-stat">
+          <strong>100%</strong>
+          <span>vocation défensive et protectrice</span>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <section>
+  <!-- Doctrine -->
+
+  <section id="doctrine">
     <div class="wrap">
-      <div class="section-head">
-        <h2>Principes d’emploi</h2>
+
+      <div class="doctrine-box">
+        <p class="eyebrow">Doctrine d’emploi</p>
+
+        <h2>Responsabilité, légalité et proportionnalité</h2>
+
         <p>
-          Les capacités de défense de la Principauté ne peuvent être envisagées
-          qu’au service de la protection des personnes et de la continuité des institutions.
+          Les Forces armées de la Principauté de Romarin agissent sous le contrôle
+          des autorités civiles et conformément aux principes de nécessité, de
+          proportionnalité et de protection des personnes. Les drones sont destinés
+          en priorité à l’observation et à l’appui de la sécurité civile. Les
+          équipements individuels de la Garde territoriale sont soumis à des règles
+          de formation, de conservation et de contrôle.
         </p>
       </div>
 
-      <ul class="timeline">
-        <li>
-          <span class="date">Principe 01</span>
-          <strong>Vocation défensive.</strong>
-          Les Forces armées de la Principauté de Romarin ne poursuivent aucun objectif
-          offensif. Leur rôle consiste à prévenir, protéger et assister.
-        </li>
-
-        <li>
-          <span class="date">Principe 02</span>
-          <strong>Autorité civile.</strong>
-          Toute mission est encadrée par les institutions compétentes et conduite
-          dans le respect de la Constitution, des décisions gouvernementales et du
-          cadre légal applicable.
-        </li>
-
-        <li>
-          <span class="date">Principe 03</span>
-          <strong>Proportionnalité.</strong>
-          Les moyens employés doivent toujours être nécessaires, adaptés à la situation
-          et proportionnés au niveau de risque identifié.
-        </li>
-
-        <li>
-          <span class="date">Principe 04</span>
-          <strong>Respect des libertés.</strong>
-          Les activités de surveillance et de protection doivent respecter la dignité,
-          la vie privée et les libertés fondamentales des citoyens.
-        </li>
-      </ul>
     </div>
   </section>
 
-  <section class="cta">
+  <!-- Appel à l'action -->
+
+  <section class="cta" id="rejoindre">
     <div class="wrap">
       <h2>Participer à la construction de la Principauté</h2>
+
       <p>
         La Principauté de Romarin est un projet politique, culturel et intellectuel.
-        Chaque citoyen peut contribuer à son développement et à la réflexion sur ses institutions.
+        Chaque citoyen peut contribuer à son développement, à ses institutions
+        et à sa réflexion sur la souveraineté.
       </p>
 
-      <a href="https://forms.gle/HRVZZjBSjbexcoKR9" class="btn btn-primary" target="_blank" rel="noopener">
+      <a
+        href="https://forms.gle/HRVZZjBSjbexcoKR9"
+        class="btn btn-primary"
+        target="_blank"
+        rel="noopener"
+      >
         Rejoindre maintenant
       </a>
     </div>
