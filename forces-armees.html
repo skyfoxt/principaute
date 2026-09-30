@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Présentation des Forces armées de la Principauté : défense territoriale, drones et équipements individuels."
+  />
+  <title>Forces armées | Principauté</title>
+
+  <style>
+    :root {
+      --bleu-nuit: #07111f;
+      --bleu: #102b46;
+      --bleu-clair: #1d5d85;
+      --or: #c6a15b;
+      --or-clair: #e6c880;
+      --blanc: #f5f7fa;
+      --gris: #bac4ce;
+      --gris-fonce: #8e9ba8;
+      --fond-carte: rgba(17, 43, 68, 0.88);
+      --bordure: rgba(230, 200, 128, 0.28);
+      --ombre: 0 18px 45px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--blanc);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 85% 8%, rgba(29, 93, 133, 0.36), transparent 31rem),
+        linear-gradient(145deg, #07111f 0%, #0a1b2d 45%, #07111f 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .conteneur {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+
+    .navigation {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(7, 17, 31, 0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .navigation-contenu {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .marque {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .embleme-mini {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: var(--bleu-nuit);
+      background: var(--or);
+      border-radius: 50%;
+      font-size: 1.1rem;
+      box-shadow: 0 0 0 4px rgba(198, 161, 91, 0.15);
+    }
+
+    .liens-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      color: var(--gris);
+      font-size: 0.92rem;
+    }
+
+    .liens-nav a:hover,
+    .liens-nav a:focus-visible {
+      color: var(--or-clair);
+    }
+
+    /* En-tête */
+
+    .hero {
+      min-height: 560px;
+      display: grid;
+      align-items: center;
+      padding: 5rem 0 4.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(90deg, rgba(7, 17, 31, 0.92) 5%, rgba(7, 17, 31, 0.52) 70%, rgba(7, 17, 31, 0.82)),
+        linear-gradient(135deg, #0b263d, #122f49 55%, #081522);
+    }
+
+    .hero-grille {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin: 0 0 1rem;
+      color: var(--or-clair);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 32px;
+      height: 2px;
+      content: "";
+      background: var(--or);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 800px;
+      margin-bottom: 1.25rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.7rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-texte {
+      max-width: 680px;
+      margin-bottom: 2rem;
+      color: var(--gris);
+      font-size: 1.12rem;
+    }
+
+    .boutons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .bouton {
+      display: inline-block;
+      padding: 0.8rem 1.1rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .bouton:hover {
+      transform: translateY(-2px);
+    }
+
+    .bouton-primaire {
+      color: #111;
+      background: var(--or-clair);
+    }
+
+    .bouton-secondaire {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--blanc);
+    }
+
+    .embleme-principal {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--bordure);
+      border-radius: 50%;
+      color: var(--or-clair);
+      background:
+        radial-gradient(circle, rgba(198, 161, 91, 0.18) 0 23%, transparent 24%),
+        repeating-radial-gradient(circle, transparent 0 23px, rgba(198, 161, 91, 0.10) 24px 25px);
+      box-shadow: var(--ombre);
+    }
+
+    .embleme-principal span {
+      width: 68%;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--or);
+      border-radius: 50%;
+      font-family: Georgia, serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: bold;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 5rem 0;
+    }
+
+    .titre-section {
+      max-width: 780px;
+      margin-bottom: 2.5rem;
+    }
+
+    .titre-section h2 {
+      margin-bottom: 0.7rem;
+      color: var(--or-clair);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.1;
+    }
+
+    .titre-section p {
+      margin-bottom: 0;
+      color: var(--gris);
+    }
+
+    .grille-principes,
+    .grille-cartes,
+    .grille-chiffres {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .grille-principes {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grille-cartes {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grille-chiffres {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .carte {
+      padding: 1.55rem;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 8px;
+      background: var(--fond-carte);
+      box-shadow: var(--ombre);
+    }
+
+    .numero,
+    .icone {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      margin-bottom: 1rem;
+      border: 1px solid var(--bordure);
+      border-radius: 50%;
+      color: var(--or-clair);
+      font-weight: 800;
+    }
+
+    .carte h3 {
+      margin-bottom: 0.55rem;
+      font-size: 1.06rem;
+    }
+
+    .carte p {
+      margin-bottom: 0;
+      color: var(--gris);
+      font-size: 0.94rem;
+    }
+
+    .unites {
+      background: rgba(3, 11, 20, 0.38);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .carte-unite {
+      position: relative;
+      overflow: hidden;
+      min-height: 255px;
+    }
+
+    .carte-unite::after {
+      position: absolute;
+      right: -1.1rem;
+      bottom: -3.4rem;
+      color: rgba(230, 200, 128, 0.08);
+      font-family: Georgia, serif;
+      font-size: 10rem;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .carte-unite.drone::after {
+      content: "01";
+    }
+
+    .carte-unite.legere::after {
+      content: "02";
+    }
+
+    .label-unite {
+      display: inline-block;
+      margin-bottom: 0.85rem;
+      color: var(--or-clair);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .carte-unite h3 {
+      position: relative;
+      z-index: 1;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.7rem;
+    }
+
+    .carte-unite p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .liste {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 0.55rem;
+      margin: 1.25rem 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--gris);
+      font-size: 0.92rem;
+    }
+
+    .liste li::before {
+      margin-right: 0.6rem;
+      color: var(--or);
+      content: "◆";
+      font-size: 0.65rem;
+    }
+
+    .chiffre {
+      padding: 1.4rem 1rem;
+      border-top: 2px solid var(--or);
+      background: rgba(16, 43, 70, 0.55);
+      text-align: center;
+    }
+
+    .chiffre strong {
+      display: block;
+      color: var(--or-clair);
+      font-family: Georgia, serif;
+      font-size: 2.3rem;
+      line-height: 1;
+    }
+
+    .chiffre span {
+      display: block;
+      margin-top: 0.65rem;
+      color: var(--gris);
+      font-size: 0.82rem;
+    }
+
+    .cadre-ethique {
+      padding: 2rem;
+      border-left: 4px solid var(--or);
+      background: linear-gradient(90deg, rgba(198, 161, 91, 0.13), transparent);
+    }
+
+    .cadre-ethique h2 {
+      margin-bottom: 0.7rem;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .cadre-ethique p {
+      max-width: 900px;
+      margin-bottom: 0;
+      color: var(--gris);
+    }
+
+    footer {
+      padding: 2.2rem 0;
+      color: var(--gris-fonce);
+      font-size: 0.88rem;
+      text-align: center;
+      background: #050d17;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 800px) {
+      .hero-grille,
+      .grille-principes,
+      .grille-cartes,
+      .grille-chiffres {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 4.2rem 0;
+      }
+
+      .embleme-principal {
+        width: min(280px, 80vw);
+        justify-self: center;
+      }
+
+      .liens-nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navigation">
+    <div class="conteneur navigation-contenu">
+      <a class="marque" href="index.html" aria-label="Retour à l'accueil">
+        <span class="embleme-mini">✦</span>
+        <span>Principauté</span>
+      </a>
+
+      <nav class="liens-nav" aria-label="Navigation principale">
+        <a href="#mission">Mission</a>
+        <a href="#unites">Unités</a>
+        <a href="#doctrine">Doctrine</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="titre-principal">
+      <div class="conteneur hero-grille">
+        <div>
+          <p class="eyebrow">Service de défense territoriale</p>
+          <h1 id="titre-principal">Forces armées de la Principauté</h1>
+          <p class="hero-texte">
+            Une force de défense compacte, moderne et responsable, dédiée à la
+            protection du territoire, des institutions et de la population.
+          </p>
+
+          <div class="boutons">
+            <a class="bouton bouton-primaire" href="#unites">Découvrir les unités</a>
+            <a class="bouton bouton-secondaire" href="#doctrine">Notre doctrine</a>
+          </div>
+        </div>
+
+        <div class="embleme-principal" aria-label="Emblème des forces armées">
+          <span>✦</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission">
+      <div class="conteneur">
+        <div class="titre-section">
+          <p class="eyebrow">Notre rôle</p>
+          <h2>Préserver la souveraineté et la sécurité</h2>
+          <p>
+            Les Forces armées constituent un instrument de protection placé sous
+            l’autorité civile de la Principauté. Leur mission est exclusivement
+            défensive : prévenir les risques, protéger les citoyens et soutenir
+            les autorités en situation de crise.
+          </p>
+        </div>
+
+        <div class="grille-principes">
+          <article class="carte">
+            <span class="numero">01</span>
+            <h3>Défense territoriale</h3>
+            <p>
+              Surveillance du territoire et protection des infrastructures,
+              institutions et zones d’intérêt stratégique.
+            </p>
+          </article>
+
+          <article class="carte">
+            <span class="numero">02</span>
+            <h3>Appui aux secours</h3>
+            <p>
+              Soutien logistique et observation des zones affectées lors
+              d’incidents, de catastrophes ou de situations d’urgence.
+            </p>
+          </article>
+
+          <article class="carte">
+            <span class="numero">03</span>
+            <h3>Protection des citoyens</h3>
+            <p>
+              Participation à la résilience nationale dans le respect du droit,
+              des libertés fondamentales et de la chaîne de commandement civile.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="unites" id="unites">
+      <div class="conteneur">
+        <div class="titre-section">
+          <p class="eyebrow">Composantes</p>
+          <h2>Des capacités adaptées à un territoire compact</h2>
+          <p>
+            L’organisation privilégie la mobilité, l’observation, la
+            communication et la préparation. Les effectifs et moyens présentés
+            ci-dessous peuvent être ajustés par les autorités compétentes.
+          </p>
+        </div>
+
+        <div class="grille-cartes">
+          <article class="carte carte-unite drone">
+            <span class="label-unite">Unité 01</span>
+            <h3>Escadrille de drones</h3>
+            <p>
+              Une composante aérienne légère dédiée à l’observation, à la
+              cartographie et à l’appui de la sécurité civile.
+            </p>
+            <ul class="liste">
+              <li>Reconnaissance et observation du territoire</li>
+              <li>Cartographie et évaluation après incident</li>
+              <li>Relais d’information pour les services de secours</li>
+              <li>Respect de la vie privée et des règles d’emploi</li>
+            </ul>
+          </article>
+
+          <article class="carte carte-unite legere">
+            <span class="label-unite">Unité 02</span>
+            <h3>Garde territoriale</h3>
+            <p>
+              Une unité de protection au sol, formée à la surveillance, au
+              contrôle d’accès et à la sécurisation des sites officiels.
+            </p>
+            <ul class="liste">
+              <li>Équipement individuel réglementé et sécurisé</li>
+              <li>Protection des bâtiments et sites sensibles</li>
+              <li>Coordination avec les autorités civiles</li>
+              <li>Formation, discipline et stockage contrôlé</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="capacites">
+      <div class="conteneur">
+        <div class="titre-section">
+          <p class="eyebrow">Organisation</p>
+          <h2 id="capacites">Une structure lisible et contrôlée</h2>
+          <p>
+            Ces indicateurs constituent des emplacements à personnaliser selon
+            l’organisation réelle ou fictive de votre Principauté.
+          </p>
+        </div>
+
+        <div class="grille-chiffres">
+          <div class="chiffre">
+            <strong>02</strong>
+            <span>unités principales</span>
+          </div>
+
+          <div class="chiffre">
+            <strong>01</strong>
+            <span>commandement unifié</span>
+          </div>
+
+          <div class="chiffre">
+            <strong>24/7</strong>
+            <span>veille et coordination</span>
+          </div>
+
+          <div class="chiffre">
+            <strong>100%</strong>
+            <span>vocation défensive</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="doctrine">
+      <div class="conteneur">
+        <div class="cadre-ethique">
+          <p class="eyebrow">Doctrine d’emploi</p>
+          <h2>Responsabilité, légalité et proportionnalité</h2>
+          <p>
+            Toute capacité de défense est employée sous contrôle de l’autorité
+            civile, conformément aux lois applicables et aux principes de
+            nécessité, de proportionnalité et de protection des personnes. Les
+            drones sont prioritairement destinés à l’observation et au soutien
+            des services de sécurité civile. Les équipements individuels sont
+            soumis à des règles strictes de formation, de conservation et de
+            traçabilité.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="conteneur">
+      © <span id="annee"></span> Principauté — Forces armées · Page institutionnelle
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("annee").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
