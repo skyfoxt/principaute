@@ -44,6 +44,17 @@ const ARTICLES = [
       <p>Le prince a déclaré :"Je ressors grandie de cette expérience politique, l'usage avec banalité d'armes chimiques et la présence d'élements appartenants à des factions idéologiques radicales m'a profondément choqué et surpris". .</p>
     `
   },
+{
+    id: "election-2026",
+    titre: "Organisation de l'élection présidentielle",
+    date: "2026-10-17",
+    categorie: "Election",
+    resume: "Le prince a autorisé ce samedi la tenue de l'élection présidentielle.",
+    image: "assets/manifestionprince17.jpg",
+    contenu: `
+      <p>Depuis maintenant plus d'un an le poste de Premier Ministre est vacant, le gouvernement a finalement décidé d'organisé un scrutin avant la fin de l'année calendaire. .</p>
+    `
+  },
   {
     id: "exemple-programme",
     titre: "Exemple d'article programmé",
