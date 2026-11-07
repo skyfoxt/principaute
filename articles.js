@@ -18,22 +18,21 @@ const ARTICLES = [
   {
     id: "ouverture-page-actualites",
     titre: "Ouverture de la page d'actualités",
-    date: "2026-11-04",
+    date: "2026-11-07",
     categorie: "Annonce",
     resume: "La Principauté de Romarin inaugure sa rubrique d'actualités officielles.",
     image: "",
     contenu: `
-      <p>La Principauté de Romarin met en ligne sa rubrique d'actualités. Vous y retrouverez les annonces officielles, les décisions des institutions et les moments marquants de la vie de la Principauté.</p>
-      <p>Cet article est un exemple : modifiez-le ou supprimez-le dans le fichier <strong>articles.js</strong>.</p>
+      <p>La Principauté de Romarin met en ligne sa rubrique d'actualités. Vous y retrouverez les annonces officielles, les décisions du gouvernement et les moments marquants de la vie politique de la Principauté.</p>
     `
   },
   {
-    id: "exemple-institutions",
-    titre: "Exemple d'article : décision des institutions",
-    date: "2026-11-01",
-    categorie: "Institutions",
-    resume: "Un modèle d'article avec intertitre et liste, à reprendre pour vos publications.",
-    image: "",
+    id: "manifestation-france",
+    titre: "Participation de sa Majesté au évenemnt du 17 octobre",
+    date: "2026-10-17",
+    categorie: "Annonce",
+    resume: "Découvrez l'engagement du Prince pour sa seconde patrie.",
+    image: "assets/manifestionprince17.jpg",
     contenu: `
       <p>Texte d'introduction de l'article.</p>
       <h3>Points principaux</h3>
