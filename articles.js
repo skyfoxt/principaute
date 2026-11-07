@@ -28,7 +28,7 @@ const ARTICLES = [
   },
   {
     id: "manifestation-france",
-    titre: "Participation de sa Majesté au évenemnt du 17 octobre",
+    titre: "Participation de sa Majesté au évenement du 17 octobre",
     date: "2026-10-17",
     categorie: "Annonce",
     resume: "Découvrez l'engagement du Prince pour sa seconde patrie.",
