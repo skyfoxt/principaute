@@ -13,7 +13,10 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  zoom: 1.33; /* même zoom que le reste du site (style.css) */
+}
 
 body {
   margin: 0;
