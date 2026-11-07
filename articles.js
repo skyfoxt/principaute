@@ -34,14 +34,14 @@ const ARTICLES = [
     resume: "Découvrez l'engagement du Prince pour sa seconde patrie.",
     image: "assets/manifestionprince17.jpg",
     contenu: `
-      <p>Texte d'introduction de l'article.</p>
-      <h3>Points principaux</h3>
+      <p>Face à la dégradation rapide de la grandeur de la République Française, Mahé Ier, en sa qualité de chef d'état, a participer à la manifestation du 17 Octobre à Nantes. </p>
+      <h3>Ses revendications</h3>
       <ul>
-        <li>Premier point</li>
-        <li>Deuxième point</li>
-        <li>Troisième point</li>
+        <li>Une amélioration du système démocratique</li>
+        <li>La modernisation du système scolaire français</li>
+        <li>La défense de la liberté</li>
       </ul>
-      <p>Conclusion de l'article.</p>
+      <p>Le prince a déclaré :"Je ressors grandie de cette expérience politique, l'usage avec banalité d'armes chimiques et la présence d'élements appartenants à des factions idéologiques radicales m'a profondément choqué et surpris". .</p>
     `
   },
   {
