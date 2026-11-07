@@ -47,7 +47,7 @@ const ARTICLES = [
   {
     id: "election-2026",
     titre: "Organisation de l'élection présidentielle",
-    date: "2026-10-17",
+    date: "2026-11-07",
     categorie: "Election",
     resume: "Le prince a autorisé ce samedi la tenue de l'élection présidentielle.",
     image: "assets/voteimage.jpg",
