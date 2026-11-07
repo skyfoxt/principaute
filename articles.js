@@ -44,7 +44,7 @@ const ARTICLES = [
       <p>Le prince a déclaré :"Je ressors grandie de cette expérience politique, l'usage avec banalité d'armes chimiques et la présence d'élements appartenants à des factions idéologiques radicales m'a profondément choqué et surpris". .</p>
     `
   },
-{
+  {
     id: "election-2026",
     titre: "Organisation de l'élection présidentielle",
     date: "2026-10-17",
