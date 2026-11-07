@@ -50,7 +50,7 @@ const ARTICLES = [
     date: "2026-10-17",
     categorie: "Election",
     resume: "Le prince a autorisé ce samedi la tenue de l'élection présidentielle.",
-    image: "assets/manifestionprince17.jpg",
+    image: "assets/voteimage.jpg",
     contenu: `
       <p>Depuis maintenant plus d'un an le poste de Premier Ministre est vacant, le gouvernement a finalement décidé d'organisé un scrutin avant la fin de l'année calendaire. .</p>
     `
