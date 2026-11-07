@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Actualités — Principauté de Romarin</title>
+  <meta name="description" content="Les actualités officielles de la Principauté de Romarin.">
+  <link rel="icon" href="img/blason.png">
+  <link rel="stylesheet" href="actualites.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Accueil de la Principauté de Romarin">
+      <img src="img/blason.png" alt="Blason de la Principauté de Romarin" class="brand-logo">
+      <span class="brand-text">
+        <span class="brand-name">Principauté de Romarin</span>
+        <span class="brand-motto">Liberté · Justice · Paix</span>
+      </span>
+    </a>
+    <nav class="main-nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="actualites.html" class="active">Actualités</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Vue liste -->
+    <section id="vue-liste">
+      <div class="page-title">
+        <h1>Actualités</h1>
+        <p>Annonces et nouvelles officielles de la Principauté.</p>
+      </div>
+
+      <div class="toolbar">
+        <div id="filtres" class="filtres" role="group" aria-label="Filtrer par catégorie"></div>
+        <input id="recherche" type="search" placeholder="Rechercher un article…" aria-label="Rechercher un article">
+      </div>
+
+      <div id="grille" class="grille"></div>
+      <p id="vide" class="vide" hidden>Aucun article à afficher pour le moment.</p>
+    </section>
+
+    <!-- Vue article -->
+    <article id="vue-article" hidden></article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="annee"></span> Principauté de Romarin — Liberté · Justice · Paix</p>
+  </footer>
+
+  <script src="articles.js"></script>
+  <script src="actualites.js"></script>
+</body>
+</html>
