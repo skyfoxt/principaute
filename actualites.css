@@ -1,0 +1,215 @@
+:root {
+  --noir: #111418;
+  --bleu: #034ba8;
+  --bleu-clair: #e8f0fb;
+  --or: #f2c200;
+  --gris: #5b6470;
+  --bord: #e3e6ea;
+  --fond: #fafbfc;
+  --blanc: #ffffff;
+  --rayon: 14px;
+  --max: 1100px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  color: var(--noir);
+  background: var(--fond);
+  line-height: 1.65;
+}
+
+/* ---------- En-tête ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  background: var(--blanc);
+  border-bottom: 1px solid var(--bord);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 5px;
+  background: linear-gradient(to right, var(--noir) 33%, var(--blanc) 33% 66%, var(--bleu) 66%);
+  border-bottom: 1px solid var(--bord);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-logo {
+  height: 84px;
+  width: auto;
+  display: block;
+}
+
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-name { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
+.brand-motto { font-size: 0.85rem; color: var(--gris); font-style: italic; margin-top: 0.2rem; }
+
+.main-nav { display: flex; gap: 0.4rem; }
+.main-nav a {
+  text-decoration: none;
+  color: var(--noir);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.2s, color 0.2s;
+}
+.main-nav a:hover { background: var(--bleu-clair); color: var(--bleu); }
+.main-nav a.active { background: var(--bleu); color: var(--blanc); }
+
+/* ---------- Contenu ---------- */
+main {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 3rem clamp(1rem, 4vw, 2rem) 4rem;
+  min-height: 60vh;
+}
+
+.page-title h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.02em;
+}
+.page-title p { margin: 0; color: var(--gris); font-size: 1.1rem; }
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 2rem 0 1.5rem;
+}
+
+.filtres { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.filtre {
+  border: 1px solid var(--bord);
+  background: var(--blanc);
+  color: var(--noir);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filtre:hover { border-color: var(--bleu); color: var(--bleu); }
+.filtre.actif { background: var(--noir); border-color: var(--noir); color: var(--blanc); }
+
+#recherche {
+  font: inherit;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--bord);
+  border-radius: 999px;
+  min-width: 240px;
+  background: var(--blanc);
+}
+#recherche:focus { outline: 2px solid var(--bleu); outline-offset: 1px; }
+
+/* ---------- Cartes ---------- */
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.carte {
+  display: flex;
+  flex-direction: column;
+  background: var(--blanc);
+  border: 1px solid var(--bord);
+  border-radius: var(--rayon);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.carte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(17, 20, 24, 0.09);
+  border-color: var(--bleu);
+}
+
+.carte-image {
+  height: 170px;
+  background: linear-gradient(135deg, var(--noir) 0 33%, var(--blanc) 33% 66%, var(--bleu) 66%);
+  background-size: cover;
+  background-position: center;
+}
+
+.carte-corps { padding: 1.2rem 1.3rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+.meta { display: flex; align-items: center; gap: 0.7rem; font-size: 0.82rem; color: var(--gris); }
+.tag {
+  background: var(--bleu-clair);
+  color: var(--bleu);
+  font-weight: 700;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+}
+.carte h2 { font-size: 1.2rem; line-height: 1.3; margin: 0; letter-spacing: -0.01em; }
+.carte p { margin: 0; color: var(--gris); font-size: 0.95rem; }
+.lire { margin-top: auto; padding-top: 0.5rem; color: var(--bleu); font-weight: 700; font-size: 0.92rem; }
+
+.vide { text-align: center; color: var(--gris); padding: 3rem 0; }
+
+/* ---------- Article ---------- */
+#vue-article { max-width: 720px; margin: 0 auto; }
+.retour {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: var(--bleu);
+  font-weight: 700;
+  text-decoration: none;
+}
+.retour:hover { text-decoration: underline; }
+
+#vue-article h1 {
+  font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0.8rem 0 1.5rem;
+}
+.article-image { width: 100%; border-radius: var(--rayon); margin-bottom: 1.8rem; display: block; }
+.article-contenu { font-size: 1.08rem; }
+.article-contenu h3 { margin-top: 2rem; font-size: 1.3rem; }
+.article-contenu a { color: var(--bleu); }
+.article-contenu img { max-width: 100%; border-radius: 10px; }
+
+/* ---------- Pied de page ---------- */
+.site-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--bord);
+  color: var(--gris);
+  font-size: 0.9rem;
+  background: var(--blanc);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .brand-logo { height: 68px; }
+  .brand-name { font-size: 1.1rem; }
+  #recherche { width: 100%; min-width: 0; }
+}
