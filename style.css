@@ -545,4 +545,7 @@ footer{
   *{
     transition:none !important;
   }
+.footer-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.footer-link { font-weight: 600; text-decoration: none; }
+.footer-link:hover { text-decoration: underline; }
 }
