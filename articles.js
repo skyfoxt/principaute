@@ -18,7 +18,7 @@ const ARTICLES = [
   {
     id: "ouverture-page-actualites",
     titre: "Ouverture de la page d'actualités",
-    date: "2026-11-07",
+    date: "2026-10-07",
     categorie: "Annonce",
     resume: "La Principauté de Romarin inaugure sa rubrique d'actualités officielles.",
     image: "",
