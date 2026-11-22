@@ -12,21 +12,9 @@
 
   .hero-debt{padding:88px 0 64px;border-bottom:1px solid var(--line);flex:1 1 auto;}
   .hero-debt .eyebrow{font-size:.85rem;color:var(--blue);margin:0 0 14px;text-transform:uppercase;letter-spacing:.06em;font-weight:500;}
-  .hero-debt h1{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;margin:0 0 8px;color:var(--blue-deep);}
+  .hero-debt h1,.hero-debt h2{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;margin:0 0 8px;color:var(--blue-deep);}
   .hero-debt .subtitle{font-size:1rem;color:#4a4b50;margin:0 0 36px;}
 
-  #debt{
-    font-family:var(--serif);
-    font-size:clamp(2rem,7vw,3.8rem);
-    line-height:1.1;
-    color:var(--ink);
-    font-variant-numeric:tabular-nums lining-nums;
-    overflow-wrap:anywhere;
-    margin:0;
-    padding:24px 0;
-    border-top:2px solid var(--gold);
-    border-bottom:1px solid var(--line);
-  }
   #rate{margin:16px 0 0;color:var(--blue);font-weight:500;min-height:1.6em;font-size:1rem;}
 
   dl{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.5rem;margin:32px 0 0;padding-top:24px;border-top:1px solid var(--line);}
@@ -80,7 +68,7 @@
     <p class="eyebrow">Observatoire économique</p>
     <h1>Dette publique des États-Unis</h1>
     <p class="subtitle">Compteur en temps réel fondé sur les données officielles du Département du Trésor des États-Unis.</p>
-    <p id="debt" aria-live="off">Chargement…</p>
+    <p id="debt" class="big-number" aria-live="off">Chargement…</p>
     <p id="rate"></p>
     <p id="status" role="alert" hidden>Impossible de charger les données du Trésor américain. <button id="retry" type="button" class="btn btn-ghost">Réessayer</button></p>
     <dl>
@@ -90,8 +78,9 @@
     </dl>
 
     <div class="revenue">
-      <p class="revenue-label">Revenu cumulé de Romarin en <span id="rev-year">–</span></p>
-      <p id="revenue">–</p>
+      <h2>Revenu cumulé de Romarin</h2>
+      <p class="subtitle">Total des revenus de la Principauté pour l'année <span id="rev-year">–</span>.</p>
+      <p id="revenue" class="big-number">–</p>
       <p class="revenue-date">Mis à jour le <span id="rev-date">–</span></p>
     </div>
 
