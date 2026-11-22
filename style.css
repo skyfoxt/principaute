@@ -449,6 +449,40 @@ section.alt{
   font-style:italic;
 }
 
+/* Revenu cumulé annuel (Observatoire économique) */
+
+.revenue{
+  margin:32px 0 0;
+  padding:24px 0;
+  border-top:2px solid var(--gold);
+  border-bottom:1px solid var(--line);
+}
+
+.revenue-label{
+  margin:0 0 8px;
+  font-size:.9rem;
+  font-weight:500;
+  color:#6b6c70;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+#revenue{
+  margin:0;
+  font-family:var(--serif);
+  font-size:clamp(1.8rem,6vw,3rem);
+  line-height:1.1;
+  color:var(--ink);
+  font-variant-numeric:tabular-nums lining-nums;
+  overflow-wrap:anywhere;
+}
+
+.revenue-date{
+  margin:8px 0 0;
+  font-size:.85rem;
+  color:#6b6c70;
+}
+
 /* Pied de page */
 
 footer{
