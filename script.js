@@ -48,5 +48,29 @@ document.addEventListener('DOMContentLoaded', () => {
       dateEl.textContent = new Date(REVENU.majLe + 'T00:00:00Z')
         .toLocaleDateString('fr-FR', { dateStyle: 'long', timeZone: 'UTC' });
     }
+
+    // Équivalent en dollars, au dernier taux EUR/USD publié (source : Frankfurter, taux de la BCE)
+    const usdEl = document.getElementById('revenue-usd');
+    if (usdEl) {
+      fetch('https://api.frankfurter.dev/v2/rate/eur/usd')
+        .then(res => {
+          if (!res.ok) throw new Error(res.status);
+          return res.json();
+        })
+        .then(data => {
+          const taux = parseFloat(data.rate);
+          if (!isFinite(taux)) throw new Error('taux invalide');
+          const usd = new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          let texte = '≈ ' + usd.format(REVENU.montant * taux) + ' $';
+          if (data.date) {
+            const d = new Date(data.date + 'T00:00:00Z')
+              .toLocaleDateString('fr-FR', { dateStyle: 'long', timeZone: 'UTC' });
+            texte += ' au taux du ' + d + ' (1 € = ' + taux.toFixed(4).replace('.', ',') + ' $)';
+          }
+          usdEl.textContent = texte;
+          usdEl.hidden = false;
+        })
+        .catch(() => { usdEl.hidden = true; });
+    }
   }
 });
