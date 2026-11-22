@@ -33,11 +33,6 @@
   dt{color:#6b6c70;font-size:.9rem;font-weight:500;}
   dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-family:var(--serif);font-size:1.05rem;color:var(--ink);}
 
-  .revenue{margin:32px 0 0;padding:24px 0;border-top:2px solid var(--gold);border-bottom:1px solid var(--line);}
-  .revenue-label{margin:0 0 8px;font-size:.9rem;font-weight:500;color:#6b6c70;text-transform:uppercase;letter-spacing:.06em;}
-  #revenue{margin:0;font-family:var(--serif);font-size:clamp(1.8rem,6vw,3rem);line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums lining-nums;overflow-wrap:anywhere;}
-  .revenue-date{margin:8px 0 0;font-size:.85rem;color:#6b6c70;}
-
   #status{margin:16px 0 0;color:var(--blue);padding:16px 20px;background:var(--paper-dim);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;font-size:.9rem;}
   #status[hidden]{display:none;}
   #status .btn{padding:6px 16px;font-size:.85rem;}
@@ -124,16 +119,6 @@ const $ = id => document.getElementById(id);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const day = s => Date.parse(s + 'T00:00:00Z');
 let timer;
-
-// ➜ À modifier à la main : montant cumulé de l'année (en euros) et date de mise à jour (AAAA-MM-JJ)
-const REVENU = { montant: 1, majLe: '2026-11-22' };
-
-(function () {
-  const eur = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2 });
-  $('revenue').textContent = eur.format(REVENU.montant);
-  $('rev-year').textContent = REVENU.majLe.slice(0, 4);
-  $('rev-date').textContent = new Date(day(REVENU.majLe)).toLocaleDateString('fr-FR', { dateStyle: 'long', timeZone: 'UTC' });
-})();
 
 async function load() {
   clearInterval(timer);
