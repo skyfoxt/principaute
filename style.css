@@ -470,11 +470,22 @@ section.alt{
   margin:64px 0 0;
 }
 
+.revenue-usd,
 .revenue-date{
   margin:16px 0 0;
   color:var(--blue);
   font-weight:500;
   font-size:1rem;
+}
+
+.revenue-usd[hidden]{
+  display:none;
+}
+
+.revenue-usd:not([hidden]) + .revenue-date{
+  margin-top:6px;
+  font-weight:400;
+  font-size:.9rem;
 }
 
 /* Pied de page */
