@@ -482,6 +482,70 @@ section.alt{
   display:none;
 }
 
+/* Graphique d'évolution du total des revenus */
+
+.revenue-chart{
+  margin:40px 0 0;
+  padding:0;
+}
+
+.revenue-chart figcaption{
+  font-family:var(--serif);
+  font-size:1.15rem;
+  font-weight:600;
+  color:var(--blue-deep);
+  margin:0 0 12px;
+}
+
+#revenue-chart{
+  display:block;
+  width:100%;
+  height:auto;
+  overflow:visible;
+}
+
+#revenue-chart .grid{
+  stroke:var(--line);
+  stroke-width:1;
+}
+
+#revenue-chart .grid-base{
+  stroke:#b9b5aa;
+  stroke-width:1.5;
+}
+
+#revenue-chart .axis-text{
+  fill:#6b6c70;
+  font-family:var(--sans);
+  font-size:13px;
+}
+
+#revenue-chart .area{
+  fill:var(--blue);
+  opacity:.08;
+}
+
+#revenue-chart .line{
+  fill:none;
+  stroke:var(--blue);
+  stroke-width:2.5;
+  stroke-linejoin:round;
+  stroke-linecap:round;
+}
+
+#revenue-chart .proj{
+  stroke:var(--blue);
+  stroke-width:2;
+  stroke-dasharray:5 6;
+  opacity:.6;
+}
+
+#revenue-chart .dot{
+  fill:var(--gold-bright);
+  stroke:var(--blue-deep);
+  stroke-width:2;
+}
+
 .revenue-usd:not([hidden]) + .revenue-date{
   margin-top:6px;
   font-weight:400;
