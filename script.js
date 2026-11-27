@@ -1,7 +1,7 @@
 // Principauté de Romarin — comportements du site
 
 // ➜ À modifier à la main : montant cumulé de l'année (en euros) et date de mise à jour (AAAA-MM-JJ)
-const REVENU = { montant: 1, majLe: '2026-11-22' };
+const REVENU = { montant: 2, majLe: '2026-11-27' };
 
 document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.nav-toggle');
