@@ -4,8 +4,8 @@
 // À chaque mise à jour, AJOUTEZ une ligne avec la date (AAAA-MM-JJ) et le nouveau total cumulé.
 // La dernière ligne (la plus récente) est celle affichée en grand ; toutes alimentent le graphique.
 const HISTORIQUE = [
-  { date: '2026-11-22', montant: 1 }
   { date: '2026-11-27', montant: 2 }
+  { date: '2026-11-22', montant: 1 }
   // exemple : { date: '2026-12-05', montant: 1250.50 },
 ];
 
