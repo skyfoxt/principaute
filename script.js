@@ -5,6 +5,7 @@
 // La dernière ligne (la plus récente) est celle affichée en grand ; toutes alimentent le graphique.
 const HISTORIQUE = [
   { date: '2026-11-22', montant: 1 }
+  { date: '2026-11-27', montant: 2 }
   // exemple : { date: '2026-12-05', montant: 1250.50 },
 ];
 
